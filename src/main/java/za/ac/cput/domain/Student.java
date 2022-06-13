@@ -2,13 +2,13 @@ package za.ac.cput.domain;
 
 import javax.persistence.*;
 
+@Embeddable
 public class Student {
     //declare variables
     @Id
     @GeneratedValue
     private String studentId;
     private String email;
-    @Embeddable
     private Name name;
 
     //constructor for the builder
