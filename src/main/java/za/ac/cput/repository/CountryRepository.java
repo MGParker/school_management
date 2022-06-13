@@ -13,7 +13,7 @@ import java.util.Optional;
  Date: 13/06/2022
  */
 //Responsible for CRUD into a data store
-public class CountryRepository {
+public class CountryRepository implements ICountryRepository<Country, String>{
     private final List<Country> countryList;
     private static CountryRepository Country_Repository;
     private CountryRepository(){
