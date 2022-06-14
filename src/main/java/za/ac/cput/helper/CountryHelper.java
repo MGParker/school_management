@@ -3,7 +3,7 @@ package za.ac.cput.helper;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class Helper {
+public class CountryHelper {
 
     public static boolean isEmptyOrNull(String str){return StringUtils.isEmpty(str);}
     public static void checkStringParam(String paramName, String paramValue){

@@ -7,12 +7,12 @@ package za.ac.cput.factory;
  */
 
 import za.ac.cput.domain.Country;
-import za.ac.cput.helper.Helper;
+import za.ac.cput.helper.CountryHelper;
 
 public class CountryFactory {
     public static Country build(String countryId, String countryName){
-        Helper.checkStringParam("countryId", countryId);
-        Helper.checkStringParam("countryName", countryName);
+        CountryHelper.checkStringParam("countryId", countryId);
+        CountryHelper.checkStringParam("countryName", countryName);
         Country country = new Country.Builder().countryId(countryId).countryName(countryName).build();
         return country;
 
