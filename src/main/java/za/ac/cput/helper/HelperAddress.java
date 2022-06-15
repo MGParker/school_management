@@ -23,7 +23,7 @@ public class HelperAddress {
     }
 
     public static void checkingIntParam(String paramName, int paramValue){
-        if(paramValue == 0 || paramName.isEmpty()){
+        if(paramValue == 0 || paramName.isEmpty() || !(paramValue >= 1000 && paramValue <= 9999)){
             throw new IllegalArgumentException(String.format("Invalid value for param: %s" , paramName));
         }
     }

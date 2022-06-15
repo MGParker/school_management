@@ -20,7 +20,7 @@ class AddressFactoryTest {
         Exception exception = assertThrows(IllegalArgumentException.class, ()->
                 AddressFactory.createAddress("", "", "","",0, CapeTown));
         System.out.println(exception.getMessage());
-        assertTrue(exception.getMessage().contains("unitNumber"));
+        assertTrue(exception.getMessage().contains("streetNumber"));
     }
 
 }
