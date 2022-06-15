@@ -4,7 +4,7 @@ package za.ac.cput.domain;
  * Name.java
  * entity for the Name
  * Author: Benelzane Kholani (218257465)
- * Date: 18 June 2022
+ * Date: 13 June 2022
  *
  */
 
