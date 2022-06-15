@@ -35,7 +35,7 @@ public class HelperAddress {
     }
 
     public static void checkingEmailParam(String paramName, String paramValue){
-        if(EmailValidator.getInstance().isValid(paramValue)){
+        if(!EmailValidator.getInstance().isValid(paramValue)){
             throw new IllegalArgumentException(String.format("Invalid value for param: %s" , paramName));
         }
     }

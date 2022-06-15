@@ -1,6 +1,7 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
 import za.ac.cput.helper.HelperAddress;
 
 public class AddressFactory {

@@ -2,13 +2,20 @@ package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
+import za.ac.cput.domain.Country;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AddressFactoryTest {
 
+    Country SouthAfrica = CountryFactory.build("2055","South Africa");
+    City CapeTown = CityFactory.build("2055", "Cape Town", SouthAfrica);
+
     @Test public void buildWithSuccess(){
-        Address address = AddressFactory.createAddress("5","5","5","Johnson","7800", CapeTown);
+        Country SouthAfrica = CountryFactory.build("2055","South Africa");
+        City CapeTown = CityFactory.build("2055", "Cape Town", SouthAfrica);
+        Address address = AddressFactory.createAddress("5","5","5","Johnson",7800, CapeTown);
         System.out.println(address);
         assertAll(
                 ()-> assertNotNull(address),
