@@ -54,6 +54,50 @@ public class Address {
 
     public void setCity(City city) {this.city = city;}
 
+    public static class AddressID{
+        private String streetNumber;
+        private String streetName;
+        private int postalCode;
+        private City city;
+
+        public AddressID(String streetNumber, String streetName, int postalCode, City city) {
+            this.streetNumber = streetNumber;
+            this.streetName = streetName;
+            this.postalCode = postalCode;
+            this.city = city;
+        }
+
+        public String getStreetNumber() {
+            return streetNumber;
+        }
+
+        public String getStreetName() {
+            return streetName;
+        }
+
+        public int getPostalCode() {
+            return postalCode;
+        }
+
+        public City getCity() {
+            return city;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            AddressID addressID = (AddressID) o;
+            return postalCode == addressID.postalCode && streetNumber.equals(addressID.streetNumber) && streetName.equals(addressID.streetName)
+                    && city.equals(addressID.city);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(streetNumber, streetName, postalCode, city);
+        }
+    }
+
     //-----Builder-----
     public static class Builder {
 

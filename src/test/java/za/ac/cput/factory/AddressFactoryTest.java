@@ -13,8 +13,6 @@ class AddressFactoryTest {
     City CapeTown = CityFactory.build("2055", "Cape Town", SouthAfrica);
 
     @Test public void buildWithSuccess(){
-        Country SouthAfrica = CountryFactory.build("2055","South Africa");
-        City CapeTown = CityFactory.build("2055", "Cape Town", SouthAfrica);
         Address address = AddressFactory.createAddress("5","5","5","Johnson",7800, CapeTown);
         System.out.println(address);
         assertAll(

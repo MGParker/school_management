@@ -1,6 +1,7 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Address;
+import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.EmployeeAddress;
 import za.ac.cput.helper.HelperAddress;
 
@@ -17,6 +18,10 @@ public class EmployeeAddressFactory {
                 .build();
 
         return employeeAddress;
+    }
+
+    public static EmployeeAddress.EmployeeAddressID buildID(EmployeeAddress employeeAddress){
+        return new EmployeeAddress.EmployeeAddressID(employeeAddress.getStaffID(), employeeAddress.getAddress());
     }
 
 }
