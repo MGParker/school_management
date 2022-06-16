@@ -12,7 +12,7 @@ import java.util.Optional;
  * Date: 16 June 2022
  *
  */
-public class NameRepository  implements INameRepository<Name>{
+public class NameRepository  implements INameRepository<Name, Name.NameId>{
 
     private final List<Name> nameList;
     private static NameRepository nameRepository;
@@ -31,7 +31,8 @@ public class NameRepository  implements INameRepository<Name>{
 
     public Name save(Name name)
     {
-        Optional<Name> read = read(name);
+        Name.NameId nameId = new Name.NameId(name.getFirstName(), name.getMiddleName(), name.getLastName());
+        Optional<Name> read = read(nameId);
         if (read.isPresent()){
             delete(read.get());
         }
@@ -39,10 +40,12 @@ public class NameRepository  implements INameRepository<Name>{
         return name;
     }
 
-    public Optional<Name> read(Name name){
-
-        return this.nameList.stream().filter(c -> c.equals(name))
-                .findAny();
+    public Optional<Name> read(Name.NameId nameId) {
+        return this.nameList.stream()
+                .filter(e -> e.getFirstName().equalsIgnoreCase(nameId.getFirstName()))
+                .filter(e -> e.getMiddleName().equalsIgnoreCase(nameId.getMiddleName()))
+                .filter(e -> e.getLastName().equalsIgnoreCase(nameId.getLastName()))
+                .findFirst();
     }
 
     public void delete(Name name){
@@ -52,6 +55,5 @@ public class NameRepository  implements INameRepository<Name>{
     public List<Name> getAll(){
         return this.nameList;
     }
-
 
 }
