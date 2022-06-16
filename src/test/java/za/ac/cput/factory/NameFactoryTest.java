@@ -28,20 +28,29 @@ class NameFactoryTest {
     public void testEquality(){
         //test instance variables are all set
         assertAll("NameFactory",
-                ()->assertEquals("Cole", name.getFirstName()),
-                ()->assertEquals("Bernard", name.getMiddleName()),
-                ()->assertEquals("Woods", name.getLastName()));//test success
+                ()->assertNotNull(name.getFirstName()),
+                ()->assertNotNull(name.getMiddleName()),
+                ()->assertNotNull(name.getLastName()));//test success
     }//end of testEquality method
 
     @Test
-    public void testIdentity(){
-        assertSame(name, name2);//failed test, objects are not the same
-    }//end of testIdentity method
+    public void testObjectEquality()
+    {
+        assertTrue(name.equals(name2));//return false objects are not equal
+    }//end of test equality method
 
     @Test
-    public void testNull(){
+    public void testObjectNull(){
 
         assertNotNull(name);//object is not null
+    }
+
+    @Test
+    public void testIllegalArgumentException()
+    {
+        //test if firstName and lastName are null
+        Exception exception = assertThrows(ArithmeticException.class, () ->
+                NameFactory.getName("", "Gerad", ""));
     }
 
 }
