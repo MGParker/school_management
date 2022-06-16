@@ -12,19 +12,19 @@ import java.util.Optional;
  * Date: 16 June 2022
  *
  */
-public class NameRepository  implements INameRepository<Name, Name.NameId>{
+public class NameRepositoryImpl implements INameRepository<Name, Name.NameId>{
 
     private final List<Name> nameList;
-    private static NameRepository nameRepository;
+    private static NameRepositoryImpl nameRepository;
 
-    private NameRepository()
+    private NameRepositoryImpl()
     {
         this.nameList = new ArrayList<>();
     }
 
-    public static NameRepository nameRepository(){
+    public static NameRepositoryImpl nameRepository(){
         if (nameRepository == null) {
-            nameRepository = new NameRepository();
+            nameRepository = new NameRepositoryImpl();
         }
         return nameRepository;
     }
