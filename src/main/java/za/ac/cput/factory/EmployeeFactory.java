@@ -3,6 +3,7 @@ package za.ac.cput.factory;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.EmployeeAddress;
+import za.ac.cput.domain.Name;
 import za.ac.cput.helper.HelperAddress;
 
 public class EmployeeFactory {
