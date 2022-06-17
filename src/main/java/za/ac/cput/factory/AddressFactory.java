@@ -1,6 +1,7 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
 import za.ac.cput.helper.HelperAddress;
 
 public class AddressFactory {
@@ -24,6 +25,10 @@ public class AddressFactory {
                 .build();
 
         return address;
+    }
+
+    public static Address.AddressID buildID(Address address){
+        return new Address.AddressID(address.getStreetNumber(), address.getStreetName(), address.getPostalCode(), address.getCity());
     }
 
 }
