@@ -1,50 +1,57 @@
+/*
+ * Student.java
+ * entity class for student with a builder
+ * Rhegan Albert Fortuin 219273693
+ * Date of last edit:2022/06/16
+ */
+
 package za.ac.cput.domain;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Embeddable
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity(name = "Student")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Student")
 public class Student {
-    //declare variables
+
+    //***declare variables***
     @Id
-    @GeneratedValue
+    @Column(name = "studentId", updatable = false, nullable = false, columnDefinition = "TEXT", unique = true)
     private String studentId;
+    @Column(name = "email", updatable = false, nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
+    @Embedded
+    @Column(name = "name", updatable = false, nullable = false, columnDefinition = "TEXT")
     private Name name;
 
-    //constructor for the builder
-    public Student(studentBuilder builder){
+    //***constructor for the builder***
+    public Student(studentBuilder builder) {
         this.studentId = builder.studentId;
         this.email = builder.email;
         this.name = builder.name;
     }
 
-    //getter and setter for studentId
-    public String getStudentId() {
-        return studentId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentId.equals(student.studentId) && email.equals(student.email) && name.equals(student.name);
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentId, email, name);
     }
 
-    //getter and setter for email
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    //getter and setter for name
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
+    //***create variables into a toString***
     @Override
     public String toString() {
         return "Student{" +
@@ -54,12 +61,13 @@ public class Student {
                 '}';
     }
 
-    //builder pattern class for student
-    public static class studentBuilder{
-        private String studentId, email;
+    //***builder pattern class for student***
+    public static class studentBuilder {
+        private String studentId;
+        private String email;
         private Name name;
 
-        //setting the studentId, email and name for the builder
+        //***setting the studentId, email and name for the builder***
         public studentBuilder setStudentId(String studentId) {
             this.studentId = studentId;
             return this;
@@ -75,15 +83,7 @@ public class Student {
             return this;
         }
 
-        public Student.studentBuilder copy(Student student){
-            this.studentId = student.studentId;
-            this.email = student.email;
-            this.name = student.name;
-
-            return this;
-        }
-
-        public Student Builder(){
+        public Student build() {
             return new Student(this);
         }
     }
