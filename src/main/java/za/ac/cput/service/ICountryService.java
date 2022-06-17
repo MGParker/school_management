@@ -6,4 +6,6 @@ public interface ICountryService<T, ID> {
     T save(T t);
     Optional<T> read(ID id);
     void delete(T t);
+
+    void deleteById(ID id);
 }

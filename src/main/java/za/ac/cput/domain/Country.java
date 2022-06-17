@@ -6,11 +6,15 @@ package za.ac.cput.domain;
  Date: 13/06/2022
  */
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class Country {
-    private final String countryId, countryName;
+    @NotNull private String countryId, countryName;
 
+    private Country(){
+
+    }
     public Country(Builder builder) {
         this.countryId = builder.countryId;
         this.countryName = builder.countryName;
