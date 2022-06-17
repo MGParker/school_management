@@ -48,8 +48,8 @@ public class NameRepositoryImpl implements INameRepository<Name, Name.NameId>{
                 .findFirst();
     }
 
-    public void delete(Name name){
-        this.nameList.remove(name);
+    public boolean delete(Name name){
+       return  this.nameList.remove(name);
     }
 
     public List<Name> getAll(){
