@@ -1,3 +1,10 @@
+/*
+ * StudentFactoryTest.java
+ * student factory test for student factory
+ * Rhegan Albert Fortuin 219273693
+ * Date of last edit:2022/06/16
+ */
+
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;

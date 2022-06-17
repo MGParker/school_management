@@ -18,27 +18,28 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private iStudentRepository iStudentRepository;
 
-    public StudentServiceImpl(za.ac.cput.repository.iStudentRepository iStudentRepository) {
+    public StudentServiceImpl(iStudentRepository iStudentRepository) {
         this.iStudentRepository = iStudentRepository;
     }
 
+
     @Override
     public List<Student> findAll() {
-        return null;
+        return this.iStudentRepository.findAll();
     }
 
     @Override
     public Student save(Student student) {
-        return null;
+        return this.iStudentRepository.save(student);
     }
 
     @Override
-    public Optional<Student> read(String s) {
-        return Optional.empty();
+    public Optional<Student> read(String string) {
+        return this.iStudentRepository.findById(string);
     }
 
     @Override
     public void delete(Student student) {
-
+        this.iStudentRepository.delete(student);
     }
 }
