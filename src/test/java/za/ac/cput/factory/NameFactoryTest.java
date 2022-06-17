@@ -25,7 +25,7 @@ class NameFactoryTest {
     }
 
     @Test
-    public void testEquality(){
+    public void testNotNull(){
         //test instance variables are all set
         assertAll("NameFactory",
                 ()->assertNotNull(name.getFirstName()),

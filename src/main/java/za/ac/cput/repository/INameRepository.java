@@ -9,8 +9,8 @@ import java.util.Optional;
  *
  */
 
-public interface INameRepository<T> {
+public interface INameRepository<T, ID> {
     T save(T t);
-    Optional<T> read(T t);
-    void delete(T t);
+    Optional<T> read(ID id);
+    boolean  delete(T t);
 }
