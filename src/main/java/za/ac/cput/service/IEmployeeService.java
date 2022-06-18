@@ -10,13 +10,17 @@ import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.Name;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IEmployeeService extends IService<Employee, String>{
     List<Employee> getAll();
 
     //Question 5
-    Name getEmployeeNameByEmail(String email);
+//    Name getEmployeeNameByEmail(String email);
 
     //Question 6
-    List<Name> getEmployeeNamesByCity(String cityID);
-}
+
+//    List<Name> getEmployeeNamesByCity(String cityID);
+
+    Optional<Employee> findByEmail(String email);
+

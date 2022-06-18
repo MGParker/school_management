@@ -2,7 +2,7 @@
  *StudentFactory.java
  * factory class for the student entity
  * Rhegan Albert Fortuin 219273693
- * Date of last edit:2022/06/16
+ * Date of last edit:2022/06/18
  */
 
 package za.ac.cput.factory;

@@ -18,6 +18,14 @@ import za.ac.cput.service.INameService;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * Name.java
+ * entity for the Name
+ * Author: Dominic Dave Przygonski (219206414) & Benelzane Kholani (218257465)
+ * Date: 17 June 2022
+ *
+ */
+
 @Component
 public class EmployeeAPI {
 

@@ -52,16 +52,23 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     //Question 5
+//    @Override
+//    public Name getEmployeeNameByEmail(String email){
+//        HelperAddress.checkingEmailParam("email", email );
+//        List<Employee> empList = this.repository.findAll();
+//        for(Employee emp: empList){
+//            if(emp.getEmail().equals(email)){
+//                return emp.getName();
+//            }
+//        }
+//         return null;
+//    }
+
+    //Question 5
     @Override
-    public Name getEmployeeNameByEmail(String email){
-        HelperAddress.checkingEmailParam("email", email );
-        List<Employee> empList = this.repository.findAll();
-        for(Employee emp: empList){
-            if(emp.getEmail().equals(email)){
-                return emp.getName();
-            }
-        }
-         return null;
+    public Optional<Employee> findByEmail(String email) {
+        return Optional.empty();
     }
+
 
 }

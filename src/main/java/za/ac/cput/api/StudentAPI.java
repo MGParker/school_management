@@ -2,7 +2,7 @@
  *StudentFactory.java
  * factory class for the student entity
  * Rhegan Albert Fortuin 219273693
- * Date of last edit:2022/06/16
+ * Date of last edit:2022/06/18
  */
 
 package za.ac.cput.api;
@@ -11,13 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
-import za.ac.cput.domain.Address;
-import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.Name;
 import za.ac.cput.domain.Student;
 import za.ac.cput.factory.NameFactory;
-import za.ac.cput.service.CityService;
-import za.ac.cput.service.IAddressService;
 import za.ac.cput.service.INameService;
 import za.ac.cput.service.student.StudentService;
 
@@ -38,7 +34,7 @@ public class StudentAPI {
 
     public Student save(Student student) {
         Name.NameID name = NameFactory.buildID(student.getName());
-        this.iNameService.read(name).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Name not found"));
+        this.iNameService.read(name).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Name not found"));
         return this.studentService.save(student);
     }
 
