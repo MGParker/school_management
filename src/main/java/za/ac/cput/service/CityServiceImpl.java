@@ -1,23 +1,18 @@
 package za.ac.cput.service;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.City;
-import za.ac.cput.repository.CityRepositoryImpl;
+import za.ac.cput.repository.CityRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CityServiceImpl implements CityService {
-    private CityRepositoryImpl cityRepository;
-    private static CityService CITY_SERVICE;
+    private final CityRepository cityRepository;
 
-    private CityServiceImpl() {
-        this.cityRepository = CityRepositoryImpl.getCityRepository();
-    }
-
-    public static CityService getCityService() {
-        if (CITY_SERVICE == null)
-            CITY_SERVICE = new CityServiceImpl();
-        return CITY_SERVICE;
+    public CityServiceImpl(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
     }
 
     public City save(City city) {
@@ -25,7 +20,7 @@ public class CityServiceImpl implements CityService {
     }
 
     public Optional<City> read(String id) {
-        return this.cityRepository.read(id);
+        return this.cityRepository.findById(id);
     }
 
     public void delete(City city) {
@@ -33,6 +28,6 @@ public class CityServiceImpl implements CityService {
     }
 
     public List<City> readAll() {
-        return this.cityRepository.readAll();
+        return this.cityRepository.findAll();
     }
 }
