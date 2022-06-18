@@ -1,8 +1,3 @@
-/* AddressControllerTest.java
- Test class for AddressController
- Author: Dominic Dave Przygonski (219206414)
- Date: 14 June 2022
-*/
 package za.ac.cput.controller;
 
 import org.junit.jupiter.api.AfterEach;
@@ -14,42 +9,34 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Address;
-import za.ac.cput.domain.City;
-import za.ac.cput.domain.Country;
-import za.ac.cput.factory.AddressFactory;
-import za.ac.cput.factory.CityFactory;
-import za.ac.cput.factory.CountryFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class AddressControllerTest {
+class EmployeeControllerTest {
 
     @LocalServerPort
     private int port;
 
-    @Autowired private AddressController addressController;
-    @Autowired private TestRestTemplate restTemplate;
-
-    private Address address;
-    private Address.AddressID addressID;
-    private Country country;
-    private City city;
+    @Autowired
+    private EmployeeController employeeController;
+    @Autowired
+    private TestRestTemplate restTemplate;
     private String baseUrl;
+    private Employee employee;
+    private Name name;
 
     @BeforeEach
     void setUp() {
-        assertNotNull(addressController);
-        this.country = CountryFactory.build("2055","South Africa");
-        this.city = CityFactory.build("2055", "Cape Town",country);
-        this.address = AddressFactory.createAddress("test-unitNum", "test-complexNum","test-streetNum","test-streetName",
-                7800, city);
-        this.addressID = AddressFactory.buildID(address);
+        assertNotNull(employeeController);
+        this.name = NameFactory.getName("Joe","Jeff", "Dave");
+        this.employee = EmployeeFactory.createEmployee("2055", "201284@gmail.com", name);
 
-        this.baseUrl = "http://localhost:"+ this.port + "/schoolManagement/address/";
+        this.baseUrl = "http://localhost:"+ this.port + "/schoolManagement/employee/";
     }
 
     @AfterEach
@@ -60,7 +47,7 @@ class AddressControllerTest {
     void save() {
         String url = baseUrl + "save";
         System.out.println(url);
-        ResponseEntity<Address> response = this.restTemplate.postForEntity(url, this.address, Address.class);
+        ResponseEntity<Employee> response = this.restTemplate.postForEntity(url, this.employee, Employee.class);
         System.out.println(response);
         assertAll(
                 ()-> assertEquals(HttpStatus.OK, response.getStatusCode()),
@@ -70,9 +57,9 @@ class AddressControllerTest {
 
     @Test
     void read() {
-        String url = baseUrl+"read/" + this.addressID;
+        String url = baseUrl+"read/" + this.employee.getStaffID();
         System.out.println(url);
-        ResponseEntity<Address> response = this.restTemplate.getForEntity(url, Address.class);
+        ResponseEntity<Employee> response = this.restTemplate.getForEntity(url, Employee.class);
         assertAll(
                 ()-> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 ()-> assertNotNull(response.getBody())
@@ -83,7 +70,7 @@ class AddressControllerTest {
     void getAll() {
         String url = baseUrl + "all";
         System.out.println(url);
-        ResponseEntity<Address[]> response = this.restTemplate.getForEntity(url, Address[].class);
+        ResponseEntity<Employee[]> response = this.restTemplate.getForEntity(url, Employee[].class);
         System.out.println(Arrays.asList(response.getBody()));
         assertAll(
                 ()-> assertEquals(HttpStatus.OK, response.getStatusCode()),
@@ -93,9 +80,7 @@ class AddressControllerTest {
 
     @Test
     void delete() {
-        String url = baseUrl + "delete/" + this.addressID;
+        String url = baseUrl + "delete/" + this.employee.getStaffID();
         this.restTemplate.delete(url);
     }
-
-
 }

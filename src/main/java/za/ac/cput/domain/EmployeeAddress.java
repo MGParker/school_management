@@ -8,9 +8,7 @@ package za.ac.cput.domain;
 
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -21,9 +19,8 @@ public class EmployeeAddress implements Serializable {
     //-----Variables-----
     @NonNull @Id
     private String staffID;
-    @NonNull @Id
+    @NonNull @EmbeddedId
     private Address address;
-
 
     //-----Constructor-----
 

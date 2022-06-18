@@ -1,3 +1,8 @@
+/* AddressRepositoryTest.java
+ Test class for AddressRepository
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.repository;
 
 import org.junit.jupiter.api.AfterEach;
@@ -14,7 +19,6 @@ import za.ac.cput.factory.CountryFactory;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,3 +1,8 @@
+/* HelperAddress.java
+ Helper class for entities assigned to me Address, Employee and EmployeeAddress
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.helper;
 
 import org.apache.commons.lang3.StringUtils;

@@ -40,8 +40,8 @@ public class NameServiceImpl implements INameService {
     }
 
     @Override
-    public boolean delete(Name name) {
-        return this.repository.delete(name);
+    public void delete(Name name) {
+         this.repository.delete(name);
     }
 
     @Override

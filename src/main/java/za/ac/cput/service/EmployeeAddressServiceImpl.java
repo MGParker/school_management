@@ -1,3 +1,8 @@
+/* EmployeeAddressServiceImpl.java
+ Implementation for EmployeeAddressService
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +18,10 @@ import java.util.Optional;
 public class EmployeeAddressServiceImpl implements IEmployeeAddressService {
 
     private static IEmployeeAddressRepository repository = null;
-//    private static IEmployeeAddressService SERVICE;
-
 
     @Autowired private EmployeeAddressServiceImpl(IEmployeeAddressRepository employeeAddressRepository) {
         this.repository = employeeAddressRepository;
     }
-
-//    public static IEmployeeAddressService getService() {
-//        if (SERVICE == null) {
-//            SERVICE = new EmployeeAddressServiceImpl();
-//        }
-//        return SERVICE;
-//    }
 
     @Override
     public EmployeeAddress save(EmployeeAddress employeeAddress) {
