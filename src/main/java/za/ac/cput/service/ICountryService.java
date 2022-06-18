@@ -1,9 +1,11 @@
-package za.ac.cput.repository;
+package za.ac.cput.service;
 
 import java.util.Optional;
 
-public interface ICountryRepository<T, ID> {
+public interface ICountryService<T, ID> {
     T save(T t);
     Optional<T> read(ID id);
     void delete(T t);
+
+    void deleteById(ID id);
 }
