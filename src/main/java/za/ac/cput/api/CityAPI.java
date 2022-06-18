@@ -1,5 +1,8 @@
 package za.ac.cput.api;
-
+/*
+ CityApi.java
+ Author: Kamaludien Sonday (218168128)
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
