@@ -8,8 +8,9 @@ package za.ac.cput.domain;
  *
  */ 
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
-
+@Embeddable
 public class Name {
 
     //instance variables
@@ -23,6 +24,22 @@ public class Name {
         this.middleName = nameBuilder.middleName;
         this.lastName   = nameBuilder.lastName;
     }//end of private constructor
+
+    protected Name() {
+
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getFirstName() {
         return firstName;

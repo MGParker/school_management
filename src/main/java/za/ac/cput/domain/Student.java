@@ -31,6 +31,30 @@ public class Student {
     @Column(name = "name", updatable = false, nullable = false, columnDefinition = "TEXT")
     private Name name;
 
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
     //***constructor for the builder***
     public Student(studentBuilder builder) {
         this.studentId = builder.studentId;

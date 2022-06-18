@@ -1,6 +1,5 @@
 package za.ac.cput.repository;
 
-import za.ac.cput.repository.NameRepositoryImpl;
 import za.ac.cput.factory.NameFactory;
 import za.ac.cput.domain.Name;
 import org.junit.jupiter.api.BeforeEach;
