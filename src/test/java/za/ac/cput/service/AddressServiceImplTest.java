@@ -3,6 +3,8 @@ package za.ac.cput.service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
@@ -15,13 +17,15 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class AddressServiceImplTest {
 
     private Address address;
     private Address.AddressID addressID;
     private City city;
     private Country country;
-    private IAddressService service;
+
+    @Autowired private IAddressService service;
 
     @BeforeEach
     void setUp() {
@@ -29,7 +33,7 @@ class AddressServiceImplTest {
         this.city = CityFactory.build("2055", "Cape Town",country);
         this.address = AddressFactory.createAddress("10","5","14","Johnson",7800,city);
         this.addressID = AddressFactory.buildID(this.address);
-        this.service = AddressServiceImpl.getService();
+
     }
 
     @AfterEach
