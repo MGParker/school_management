@@ -1,9 +1,11 @@
 package za.ac.cput.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.City;
 
 import java.util.List;
 
-public interface CityRepository extends IRepository<City, String> {
-    List<City> readAll();
+@Repository
+public interface CityRepository extends JpaRepository<City, String> {
 }

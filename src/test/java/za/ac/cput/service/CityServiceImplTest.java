@@ -1,53 +1,37 @@
 package za.ac.cput.service;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
 import za.ac.cput.factory.CityFactory;
 import za.ac.cput.factory.CountryFactory;
-
-import javax.swing.text.html.Option;
 
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CityServiceImplTest {
-    private Country country;
-    private City city;
+    private Country country = CountryFactory.build("220408024", "South Africa");
+    private City city = CityFactory.build("220408025", "Cape Town", country);
     private CityService cityService;
 
-    @BeforeEach
-    //The setUp tests the save functionality
-    void setUp() {
-        this.country = CountryFactory.build("828151651", "South Africa");
-        this.city = CityFactory.build("526517865", "Cape Town", country);
-        this.cityService = CityServiceImpl.getCityService();
-        City saved = this.cityService.save(this.city);
-        assertSame(this.city, saved);
-    }
-
-    @AfterEach
-    //The tearDown tests the delete functionality
-    void tearDown() {
-        this.cityService.delete(this.city);
-        List<City> cities = this.cityService.readAll();
-        assertEquals(0, cities.size());
-    }
-
-    /*
     @Test
+    @Order(1)
     void save() {
-        City save = this.cityService.save(this.city);
-        System.out.println(save);
-        assertNotNull(save);
-        assertSame(this.city, save);
-    }*/
+        City saved = this.cityService.save(this.city);
+        System.out.println(saved);
+        assertAll(
+                () -> assertNotNull(saved),
+                () -> assertEquals(this.city, saved)
+        );
+    }
 
     @Test
+    @Order(2)
     void read() {
         Optional<City> read = this.cityService.read(this.city.getId());
         System.out.println(read);
@@ -57,19 +41,19 @@ class CityServiceImplTest {
         );
     }
 
-    /*
     @Test
+    @Order(3)
     void delete() {
-        City save = this.cityService.save(this.city);
-        this.cityService.delete(save);
+        this.cityService.delete(this.city);
         List<City> cities = this.cityService.readAll();
         assertEquals(0, cities.size());
-    }*/
+    }
 
     @Test
+    @Order(4)
     void readAll() {
         this.cityService.save(this.city);
         List<City> cities = this.cityService.readAll();
-        assertEquals(1, cities.size());
+        assertEquals(0, cities.size());
     }
 }
