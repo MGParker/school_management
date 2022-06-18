@@ -2,7 +2,7 @@
  * Student.java
  * entity class for student with a builder
  * Rhegan Albert Fortuin 219273693
- * Date of last edit:2022/06/16
+ * Date of last edit:2022/06/18
  */
 
 package za.ac.cput.domain;
@@ -31,6 +31,13 @@ public class Student {
     @Column(name = "name", updatable = false, nullable = false, columnDefinition = "TEXT")
     private Name name;
 
+    //***constructor for the builder***
+    public Student(studentBuilder builder) {
+        this.studentId = builder.studentId;
+        this.email = builder.email;
+        this.name = builder.name;
+    }
+
     public String getStudentId() {
         return studentId;
     }
@@ -53,13 +60,6 @@ public class Student {
 
     public void setName(Name name) {
         this.name = name;
-    }
-
-    //***constructor for the builder***
-    public Student(studentBuilder builder) {
-        this.studentId = builder.studentId;
-        this.email = builder.email;
-        this.name = builder.name;
     }
 
     @Override
