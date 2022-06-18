@@ -6,10 +6,16 @@
 
 package za.ac.cput.domain;
 
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
+
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 
 @Entity
 @Embeddable
@@ -25,7 +31,9 @@ public class Address implements Serializable {
     private String streetName;
     @Id
     private int postalCode;
-    @EmbeddedId
+    @ManyToOne(cascade = {PERSIST, MERGE})
+    @NotFound(action = NotFoundAction.IGNORE)
+    @NotNull
     private City city;
 
 
