@@ -89,4 +89,40 @@ public class Name {
                     '}';
         }
     }//end of NameBuilder
+
+    public static class NameId
+    {
+        private String firstName, middleName, lastName;
+
+        public NameId(String firstName, String middleName, String lastName) {
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String getMiddleName() {
+            return middleName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            NameId nameId = (NameId) o;
+            return firstName.equals(nameId.firstName) && Objects.equals(middleName, nameId.middleName) && lastName.equals(nameId.lastName);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(firstName, middleName, lastName);
+        }
+    }
 }
