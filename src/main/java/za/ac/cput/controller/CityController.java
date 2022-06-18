@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import za.ac.cput.api.CityAPI;
 import za.ac.cput.domain.City;
 import za.ac.cput.service.CityService;
 
@@ -17,10 +18,12 @@ import java.util.List;
 @Slf4j
 public class CityController {
     private final CityService cityService;
+    private final CityAPI cityAPI;
 
     @Autowired
-    public CityController(CityService cityService) {
+    public CityController(CityService cityService, CityAPI cityAPI) {
         this.cityService = cityService;
+        this.cityAPI = cityAPI;
     }
 
     @PostMapping("save")
@@ -49,5 +52,13 @@ public class CityController {
     public ResponseEntity<List<City>> readAll() {
         List<City> cities = this.cityService.readAll();
         return ResponseEntity.ok(cities);
+    }
+
+    //Question 7
+    @GetMapping("read-city-by-countryid/{countryId}")
+    public ResponseEntity<List<String>> findCitiesByCountry(@PathVariable String countryId){
+        log.info("Get cities in a country: {}", countryId);
+        List<String> cityNamesList = this.cityAPI.findCitiesByCountry(countryId);
+        return ResponseEntity.ok(cityNamesList);
     }
 }
