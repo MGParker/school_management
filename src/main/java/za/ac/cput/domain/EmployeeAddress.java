@@ -6,16 +6,29 @@
 
 package za.ac.cput.domain;
 
+import lombok.NonNull;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class EmployeeAddress {
+@Entity
+@IdClass(EmployeeAddress.EmployeeAddressID.class)
+public class EmployeeAddress implements Serializable {
 
     //-----Variables-----
+    @NonNull @Id
     private String staffID;
+    @NonNull @Id
     private Address address;
 
 
     //-----Constructor-----
+
+    protected EmployeeAddress(){}
+
     public EmployeeAddress(Builder builder) {
         this.staffID = builder.staffID;
         this.address = builder.address;
@@ -31,7 +44,7 @@ public class EmployeeAddress {
 
     public void setAddress(Address address) {this.address = address;}
 
-    public static class EmployeeAddressID{
+    public static class EmployeeAddressID implements Serializable{
         private String staffID;
         private Address address;
 
