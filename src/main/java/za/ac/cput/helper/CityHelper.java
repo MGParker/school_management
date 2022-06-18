@@ -1,4 +1,10 @@
 package za.ac.cput.helper;
+/*
+ CityHelper.java
+ Helper for the City factory
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import org.apache.commons.lang3.StringUtils;
 

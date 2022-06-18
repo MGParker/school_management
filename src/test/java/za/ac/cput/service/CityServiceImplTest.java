@@ -1,4 +1,10 @@
 package za.ac.cput.service;
+/*
+ CityServiceImplTest.java
+ Test for the City service implementation
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

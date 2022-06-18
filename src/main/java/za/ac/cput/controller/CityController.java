@@ -1,4 +1,10 @@
 package za.ac.cput.controller;
+/*
+ CityController.java
+ Controller for the City
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

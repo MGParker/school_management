@@ -1,4 +1,10 @@
 package za.ac.cput.factory;
+/*
+ CityFactoryTest.java
+ Test for the City factory
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.City;

@@ -1,4 +1,10 @@
 package za.ac.cput.service;
+/*
+ CityServiceImpl.java
+ Service implementation for the City entity
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
