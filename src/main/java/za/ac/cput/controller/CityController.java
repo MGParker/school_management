@@ -1,4 +1,8 @@
 package za.ac.cput.controller;
+/*
+ CityController.Java
+ Author: Kamaludien Sonday (218168128)
+ */
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.api.CityAPI;
 import za.ac.cput.domain.City;
 import za.ac.cput.service.CityService;
+import za.ac.cput.service.CityServiceImpl;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,11 +22,11 @@ import java.util.List;
 @RequestMapping("school/city/")
 @Slf4j
 public class CityController {
-    private final CityService cityService;
+    private final CityServiceImpl cityService;
     private final CityAPI cityAPI;
 
     @Autowired
-    public CityController(CityService cityService, CityAPI cityAPI) {
+    public CityController(CityServiceImpl cityService, CityAPI cityAPI) {
         this.cityService = cityService;
         this.cityAPI = cityAPI;
     }
