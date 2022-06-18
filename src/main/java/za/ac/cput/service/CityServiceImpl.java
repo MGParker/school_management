@@ -30,4 +30,10 @@ public class CityServiceImpl implements CityService {
     public List<City> readAll() {
         return this.cityRepository.findAll();
     }
+
+    public void deleteById(String id) {
+        Optional<City> city = read(id);
+        if (city.isPresent())
+            delete(city.get());
+    }
 }
