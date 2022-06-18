@@ -1,27 +1,28 @@
 package za.ac.cput.domain;
 
-import javax.persistence.*;
+import com.sun.istack.NotNull;
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Embeddable
 public class City implements Serializable {
-    @Id
+    @NotNull @Id
     private String id;
+    @NotNull
     private String name;
-
-    @Embedded
+    @NotNull @Embedded
     private Country country;
+
+    protected City() {}
 
     private City(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
         this.country = builder.country;
-    }
-
-    protected City() {
-
     }
 
     public String getId() {
