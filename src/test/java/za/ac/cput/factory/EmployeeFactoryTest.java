@@ -1,3 +1,8 @@
+/* EmployeeFactoryTest.java
+ Test class for EmployeeFactory
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;

@@ -1,3 +1,9 @@
+/* Employee.java
+ Entity for the Employee
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
+
 package za.ac.cput.domain;
 
 import lombok.NonNull;
@@ -16,7 +22,7 @@ public class Employee implements Serializable {
     private String staffID;
     @NonNull
     private String email;
-    @Embedded
+    @NonNull @Embedded
     private Name name;
 
     //-----Constructor-----

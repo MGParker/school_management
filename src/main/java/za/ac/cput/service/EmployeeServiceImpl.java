@@ -1,3 +1,8 @@
+/* EmployeeServiceImpl.java
+ Implementation for EmployeeService
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.service;
 
 
@@ -13,19 +18,10 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements IEmployeeService{
 
     private static IEmployeeRepository repository = null;
-//    private static IEmployeeService SERVICE;
-
 
     @Autowired private EmployeeServiceImpl(IEmployeeRepository employeesRepository){
         this.repository = employeesRepository;
     }
-
-//    public static IEmployeeService getService(){
-//        if(SERVICE == null){
-//            SERVICE = new EmployeeServiceImpl();
-//        }
-//        return SERVICE;
-//    }
 
     @Override
     public Employee save(Employee employee) {

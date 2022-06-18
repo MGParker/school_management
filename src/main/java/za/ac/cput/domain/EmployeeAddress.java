@@ -19,17 +19,8 @@ public class EmployeeAddress implements Serializable {
     //-----Variables-----
     @NonNull @Id
     private String staffID;
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride( name = "unitNumber", column = @Column(name = "address_unitNumber")),
-            @AttributeOverride( name = "complexNumber", column = @Column(name = "address_complexNumber")),
-            @AttributeOverride( name = "streetNumber", column = @Column(name = "address_streetNumber")),
-            @AttributeOverride( name = "streetName", column = @Column(name = "address_streetName")),
-            @AttributeOverride( name = "postalCode", column = @Column(name = "address_postalCode")),
-            @AttributeOverride( name = "city", column = @Column(name = "address_city"))
-    })
+    @NonNull @EmbeddedId
     private Address address;
-
 
     //-----Constructor-----
 

@@ -12,8 +12,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@IdClass(Address.AddressID.class)
 @Embeddable
+@IdClass(Address.AddressID.class)
 public class Address implements Serializable {
 
     //-----Variables-----
@@ -21,12 +21,13 @@ public class Address implements Serializable {
     private String complexNumber;
     @Id
     private String streetNumber;
-
+    @Id
     private String streetName;
-
+    @Id
     private int postalCode;
-    @Embedded
+    @EmbeddedId
     private City city;
+
 
     //-----Constructor-----
 

@@ -1,3 +1,8 @@
+/* AddressServiceImpl.java
+ Implementation for AddressService
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +19,11 @@ import java.util.Optional;
 public class AddressServiceImpl implements IAddressService{
 
     private static IAddressRepository repository = null;
-//    private static IAddressService SERVICE;
 
 
     @Autowired private AddressServiceImpl(IAddressRepository addressRepository){
         this.repository = addressRepository;
     }
-
-//    public static IAddressService getService(){
-//        if(SERVICE == null){
-//            SERVICE = new AddressServiceImpl();
-//        }
-//        return SERVICE;
-//    }
 
     @Override
     public Address save(Address address) {

@@ -1,3 +1,8 @@
+/* IAddressRepository.java
+ Repository for address
+ Author: Dominic Dave Przygonski (219206414)
+ Date: 14 June 2022
+*/
 package za.ac.cput.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +14,6 @@ import java.util.List;
 @Repository
 public interface IAddressRepository extends JpaRepository<Address, Address.AddressID> {
 
-//    public List<Address> getAll();
     List<Address> findByStreetNumberAndStreetNameAndPostalCodeAndCity(String streetNumber, String streetName, int postalCode, City city);
 
 }
