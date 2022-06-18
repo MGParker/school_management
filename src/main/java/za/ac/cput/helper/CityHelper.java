@@ -12,4 +12,10 @@ public class CityHelper {
         if (isEmptyOrNull(paramValue))
             throw new IllegalArgumentException(String.format("Invalid value for param: %s", paramName));
     }
+
+    public static void checkingEntityParam(String paramName, Object paramValue){
+        if(paramValue.equals(null)){
+            throw new IllegalArgumentException(String.format("Invalid value for param: %s", paramName));
+        }
+    }
 }
