@@ -1,24 +1,52 @@
+/*
+ * StudentFactoryTest.java
+ * student factory test for student factory
+ * Rhegan Albert Fortuin 219273693
+ * Date of last edit:2022/06/16
+ */
+
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
+import za.ac.cput.domain.Name;
 import za.ac.cput.domain.Student;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentFactoryTest {
-    //failed test
+    //Passed test
     @Test
     public void buildWithSuccess(){
-        Student student = StudentFactory.createStudent("100", "bobtheslayer@yourmom.com", "Bob Ross");
+        Name name = NameFactory.getName("Rhegan","Albert","Fortuin");
+        Student student = StudentFactory.createStudent("RAF000819", "bobtheslayer@yourmom.com", name);
         System.out.println(student);
         assertNotNull(student);
     }
 
-    //passed test
+    //failed id test
     @Test
-    public void buildWithFailure(){
-        Exception err = assertThrows(IllegalArgumentException.class, ()->StudentFactory.createStudent(null, "bobtheslayer@yourmom.com", "Bob Ross");
+    public void buildWithFailureId(){
+        Name name = NameFactory.getName("Rhegan","Albert","Fortuin");
+        Exception err = assertThrows(IllegalArgumentException.class, ()->StudentFactory.createStudent(null, "bobtheslayer@yourmom.com", name));
         System.out.println(err);
-        assertSame("Staff Id required", err.getMessage());
+        assertSame("Student Id required", err.getMessage());
+    }
+
+    //failed email test
+    @Test
+    public void buildWithFailureEmail(){
+        Name name = NameFactory.getName("Rhegan","Albert","Fortuin");
+        Exception err = assertThrows(IllegalArgumentException.class, ()->StudentFactory.createStudent("Rhegan", null, name));
+        System.out.println(err);
+        assertSame("Student email required", err.getMessage());
+    }
+
+    //failed name test
+    @Test
+    public void buildWithFailureName(){
+        Name name = NameFactory.getName("Rhegan","Albert","Fortuin");
+        Exception err = assertThrows(IllegalArgumentException.class, ()->StudentFactory.createStudent("Rhegan", "bobtheslayer@yourmom.com", null));
+        System.out.println(err);
+        assertSame("Student name required", err.getMessage());
     }
 }

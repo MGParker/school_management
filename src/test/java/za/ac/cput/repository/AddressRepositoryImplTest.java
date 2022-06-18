@@ -3,6 +3,8 @@ package za.ac.cput.repository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
@@ -16,12 +18,13 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class AddressRepositoryImplTest {
 
     private Address address;
     private City city;
     private Country country;
-    private AddressRepositoryImpl addressRepository;
+    @Autowired private IAddressRepository addressRepository;
     private Address.AddressID addressID;
 
     @BeforeEach
@@ -30,7 +33,7 @@ class AddressRepositoryImplTest {
         this.city = CityFactory.build("2055", "Cape Town",country);
         this.address = AddressFactory.createAddress("10","5","14","Johnson",7800,city);
         this.addressID = AddressFactory.buildID(this.address);
-        this.addressRepository = AddressRepositoryImpl.getRepository();
+
 
     }
 
@@ -50,7 +53,7 @@ class AddressRepositoryImplTest {
     @Test
     void read() {
         Address saved = this.addressRepository.save(this.address);
-        Optional<Address> read = this.addressRepository.read(this.addressID);
+        Optional<Address> read = this.addressRepository.findById(this.addressID);
         assertAll(
                 ()->assertTrue(read.isPresent()),
                 ()->assertSame(saved, read.get())
@@ -61,14 +64,14 @@ class AddressRepositoryImplTest {
     void delete() {
         Address saved = this.addressRepository.save(this.address);
         this.addressRepository.delete(saved);
-        List<Address> addressSet = this.addressRepository.getAll();
+        List<Address> addressSet = this.addressRepository.findAll();
         assertEquals(0,addressSet.size());
     }
 
     @Test
     void getAll() {
         this.addressRepository.save(this.address);
-        List<Address> addressSet = this.addressRepository.getAll();
+        List<Address> addressSet = this.addressRepository.findAll();
         assertEquals(1,addressSet.size());
     }
 }

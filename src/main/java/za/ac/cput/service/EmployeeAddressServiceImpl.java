@@ -1,29 +1,31 @@
 package za.ac.cput.service;
 
-import za.ac.cput.domain.Address;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.EmployeeAddress;
-import za.ac.cput.repository.AddressRepositoryImpl;
-import za.ac.cput.repository.EmployeeAddressRepositoryImpl;
+
+import za.ac.cput.repository.IEmployeeAddressRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmployeeAddressServiceImpl implements IEmployeeAddressService {
 
-    private static EmployeeAddressRepositoryImpl repository = null;
-    private static IEmployeeAddressService SERVICE;
+    private static IEmployeeAddressRepository repository = null;
+//    private static IEmployeeAddressService SERVICE;
 
 
-    private EmployeeAddressServiceImpl() {
-        this.repository = EmployeeAddressRepositoryImpl.getRepository();
+    @Autowired private EmployeeAddressServiceImpl(IEmployeeAddressRepository employeeAddressRepository) {
+        this.repository = employeeAddressRepository;
     }
 
-    public static IEmployeeAddressService getService() {
-        if (SERVICE == null) {
-            SERVICE = new EmployeeAddressServiceImpl();
-        }
-        return SERVICE;
-    }
+//    public static IEmployeeAddressService getService() {
+//        if (SERVICE == null) {
+//            SERVICE = new EmployeeAddressServiceImpl();
+//        }
+//        return SERVICE;
+//    }
 
     @Override
     public EmployeeAddress save(EmployeeAddress employeeAddress) {
@@ -32,16 +34,16 @@ public class EmployeeAddressServiceImpl implements IEmployeeAddressService {
 
     @Override
     public Optional<EmployeeAddress> read(EmployeeAddress.EmployeeAddressID employeeAddressID) {
-        return this.repository.read(employeeAddressID);
+        return this.repository.findById(employeeAddressID);
     }
 
     @Override
-    public boolean delete(EmployeeAddress employeeAddress) {
-        return this.repository.delete(employeeAddress);
+    public void delete(EmployeeAddress employeeAddress) {
+        this.repository.delete(employeeAddress);
     }
 
     @Override
     public List<EmployeeAddress> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll();
     }
 }
