@@ -9,6 +9,7 @@ package za.ac.cput.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Employee;
@@ -23,6 +24,7 @@ import za.ac.cput.service.student.StudentService;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class StudentAPI {
     private final StudentService studentService;
     private final INameService iNameService;
