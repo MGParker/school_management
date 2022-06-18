@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface CityService extends IService<City, String> {
     List<City> readAll();
+    void deleteById(String id);
 }

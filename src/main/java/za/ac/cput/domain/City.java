@@ -2,16 +2,14 @@ package za.ac.cput.domain;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Embeddable
 public class City implements Serializable {
+
     @NotNull @Id
     private String id;
     @NotNull
