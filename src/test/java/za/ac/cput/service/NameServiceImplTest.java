@@ -35,7 +35,7 @@ class NameServiceImplTest {
 
     @Test
     void testRead() {
-        assertEquals(this.nameService.read(new Name.NameId(this.name.getFirstName(), this.name.getMiddleName(),
+        assertEquals(this.nameService.read(new Name.NameID(this.name.getFirstName(), this.name.getMiddleName(),
                 this.name.getLastName())), this.name);
     }
 

@@ -8,21 +8,38 @@ package za.ac.cput.domain;
  *
  */
 
+import lombok.*;
+
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.Objects;
 
-@Entity
 @Embeddable
 public class Name {
 
     //instance variables
+    @Column(name="firstName", nullable = false)
     private String firstName;
+    @Column(name="middleName", nullable = true)
     private String middleName;
+    @Column(name="lastName", nullable = false)
     private String lastName;
 
     public Name() {
 
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     private Name(NameBuilder nameBuilder)
@@ -78,5 +95,43 @@ public class Name {
             return new Name(this);
         }
     }//end of NameBuilder
+
+    public static class NameID
+    {
+        private String firstName;
+        private String middleName;
+        private String lastName;
+
+        public NameID(String firstName, String middleName, String lastName) {
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String getMiddleName() {
+            return middleName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            NameID nameID = (NameID) o;
+            return firstName.equals(nameID.firstName) && Objects.equals(middleName, nameID.middleName) && lastName.equals(nameID.lastName);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(firstName, middleName, lastName);
+        }
+    }
 
 }
