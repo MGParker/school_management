@@ -1,12 +1,15 @@
 package za.ac.cput.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.EmployeeAddress;
 
 import java.util.List;
 
-public interface IEmployeeAddressRepository extends IRepository<EmployeeAddress, String>{
+@Repository
+public interface IEmployeeAddressRepository extends JpaRepository<EmployeeAddress, EmployeeAddress.EmployeeAddressID> {
 
-    public List<Employee> getAll();
+//    public List<EmployeeAddress> getAll();
 
 }
