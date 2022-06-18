@@ -1,4 +1,3 @@
-
 server:
   error:
     include-stacktrace: never
@@ -6,9 +5,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-  show-sql: true
+    show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/school_management-db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/city_management-db?createDatabaseIfNotExist=true
     username: root
     password: password
 
