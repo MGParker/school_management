@@ -6,10 +6,13 @@ package za.ac.cput.domain;
  * Author: Benelzane Kholani (218257465)
  * Date: 13 June 2022
  *
- */ 
+ */
 
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import java.util.Objects;
+
+@Entity
 @Embeddable
 public class Name {
 
@@ -18,6 +21,10 @@ public class Name {
     private String middleName;
     private String lastName;
 
+    public Name() {
+
+    }
+
     private Name(NameBuilder nameBuilder)
     {
         this.firstName  = nameBuilder.firstName;
@@ -25,32 +32,26 @@ public class Name {
         this.lastName   = nameBuilder.lastName;
     }//end of private constructor
 
-    protected Name() {
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name = (Name) o;
+        return firstName.equals(name.firstName) && middleName.equals(name.middleName) && lastName.equals(name.lastName);
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, middleName, lastName);
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
+    @Override
+    public String toString() {
+        return "Name{" +
+                "firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     public static class NameBuilder{
@@ -73,73 +74,9 @@ public class Name {
             return this;
         }
 
-        public NameBuilder copy(Name name){
-            this.firstName  = name.firstName;
-            this.middleName = name.middleName;
-            this.lastName   = name.lastName;
-            return this;
-        }
-
-        public Name getName(){
+        public Name build() {
             return new Name(this);
-        }//end of getName method
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Name name = (Name) o;
-            return firstName.equals(name.firstName) && middleName.equals(name.middleName) && lastName.equals(name.lastName) ;
-        }//end of equals method
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(firstName, middleName, lastName);
-        }//end of hashCode method
-
-        @Override
-        public String toString() {
-            return "NameBuilder{" +
-                    "firstName='" + firstName + '\'' +
-                    ", middleName='" + middleName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    '}';
         }
     }//end of NameBuilder
 
-    public static class NameId
-    {
-        private String firstName, middleName, lastName;
-
-        public NameId(String firstName, String middleName, String lastName) {
-            this.firstName = firstName;
-            this.middleName = middleName;
-            this.lastName = lastName;
-        }
-
-        public String getFirstName() {
-            return firstName;
-        }
-
-        public String getMiddleName() {
-            return middleName;
-        }
-
-        public String getLastName() {
-            return lastName;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            NameId nameId = (NameId) o;
-            return firstName.equals(nameId.firstName) && Objects.equals(middleName, nameId.middleName) && lastName.equals(nameId.lastName);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(firstName, middleName, lastName);
-        }
-    }
 }
