@@ -6,25 +6,27 @@
 
 package za.ac.cput.domain;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @IdClass(Address.AddressID.class)
+@Embeddable
 public class Address implements Serializable {
 
     //-----Variables-----
     private String unitNumber;
     private String complexNumber;
-    @NotNull @Id private String streetNumber;
-    @NotNull @Id private String streetName;
-    @NotNull @Id private int postalCode;
-    @Embedded private City city;
+    @Id
+    private String streetNumber;
+
+    private String streetName;
+
+    private int postalCode;
+    @Embedded
+    private City city;
 
     //-----Constructor-----
 

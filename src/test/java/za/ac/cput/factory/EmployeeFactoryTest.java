@@ -1,10 +1,7 @@
 package za.ac.cput.factory;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Employee;
-import za.ac.cput.domain.EmployeeAddress;
 import za.ac.cput.domain.Name;
 
 import static org.junit.jupiter.api.Assertions.*;

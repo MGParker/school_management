@@ -1,19 +1,5 @@
 package za.ac.cput.service;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Employee;
-import za.ac.cput.domain.Name;
-import za.ac.cput.factory.EmployeeFactory;
-import za.ac.cput.factory.NameFactory;
-
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class EmployeeServiceImplTest {
 
 //    private Name name;

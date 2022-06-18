@@ -8,9 +8,7 @@ package za.ac.cput.domain;
 
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -21,7 +19,15 @@ public class EmployeeAddress implements Serializable {
     //-----Variables-----
     @NonNull @Id
     private String staffID;
-    @NonNull @Id
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "unitNumber", column = @Column(name = "address_unitNumber")),
+            @AttributeOverride( name = "complexNumber", column = @Column(name = "address_complexNumber")),
+            @AttributeOverride( name = "streetNumber", column = @Column(name = "address_streetNumber")),
+            @AttributeOverride( name = "streetName", column = @Column(name = "address_streetName")),
+            @AttributeOverride( name = "postalCode", column = @Column(name = "address_postalCode")),
+            @AttributeOverride( name = "city", column = @Column(name = "address_city"))
+    })
     private Address address;
 
 

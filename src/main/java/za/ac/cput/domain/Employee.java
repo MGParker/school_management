@@ -2,6 +2,7 @@ package za.ac.cput.domain;
 
 import lombok.NonNull;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -15,7 +16,7 @@ public class Employee implements Serializable {
     private String staffID;
     @NonNull
     private String email;
-    @NonNull
+    @Embedded
     private Name name;
 
     //-----Constructor-----

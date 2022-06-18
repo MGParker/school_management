@@ -1,22 +1,5 @@
 package za.ac.cput.repository;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Address;
-import za.ac.cput.domain.City;
-import za.ac.cput.domain.Country;
-import za.ac.cput.domain.EmployeeAddress;
-import za.ac.cput.factory.AddressFactory;
-import za.ac.cput.factory.CityFactory;
-import za.ac.cput.factory.CountryFactory;
-import za.ac.cput.factory.EmployeeAddressFactory;
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class EmployeeAddressRepositoryImplTest {
 
 //    private Address address;
