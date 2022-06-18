@@ -20,7 +20,7 @@ class NameRepositoryImplTest {
     private Name name;
     private Name name2;
     private NameRepositoryImpl nameRepository;
-    private Name.NameId nameId;
+    private Name.NameID nameId;
 
     @BeforeEach
     void setUp() {
@@ -40,7 +40,7 @@ class NameRepositoryImplTest {
 
     @Test
     void testRead() {
-        assertEquals(this.name, nameRepository.read(new Name.NameId(this.name.getFirstName(), this.name.getMiddleName(), this.name.getLastName())));
+        assertEquals(this.name, nameRepository.read(new Name.NameID(this.name.getFirstName(), this.name.getMiddleName(), this.name.getLastName())));
     }
 
     @Test

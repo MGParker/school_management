@@ -20,7 +20,10 @@ public class NameFactory {
         return new Name.NameBuilder()
                 .setFirstName(firstName)
                 .setMiddleName(middleName)
-                .setLastName(lastName).getName();
+                .setLastName(lastName).build();
     }
 
+    public static Name.NameID buildID(Name name) {
+        return new Name.NameID(name.getFirstName(), name.getMiddleName(), name.getLastName());
+    }
 }

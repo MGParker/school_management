@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+/*
+=======
+>>>>>>> 1e59caaecf8428269e26544978a70f4ad163af34
 package za.ac.cput.api;
 /*
  CityApi.java

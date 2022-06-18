@@ -35,7 +35,7 @@ public class NameServiceImpl implements INameService {
     }
 
     @Override
-    public Optional<Name> read(Name.NameId nameId) {
+    public Optional<Name> read(Name.NameID nameId) {
         return this.repository.read(nameId);
     }
 

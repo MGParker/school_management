@@ -16,8 +16,11 @@ import java.util.Optional;
 @Service
 public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
+<<<<<<< HEAD
+=======
 
     @Autowired
+>>>>>>> 1e59caaecf8428269e26544978a70f4ad163af34
     public CityServiceImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
     }

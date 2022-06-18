@@ -10,6 +10,6 @@ import za.ac.cput.domain.Name;
  *
  */
 
-public interface INameService extends IService<Name, Name.NameId>{
+public interface INameService extends IService<Name, Name.NameID>{
     List<Name> getAll();
 }

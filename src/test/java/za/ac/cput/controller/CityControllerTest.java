@@ -79,8 +79,12 @@ class CityControllerTest {
                 City[].class);
         System.out.println(Arrays.asList(response.getBody()));
         assertAll(
+<<<<<<< HEAD
+                () -> assertEquals(HttpStatus.OK, response.getStatusCode())
+=======
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertTrue(response.getBody().length == 0)
+>>>>>>> 1e59caaecf8428269e26544978a70f4ad163af34
         );
     }
 }
