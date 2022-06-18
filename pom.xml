@@ -27,11 +27,7 @@
 <!--        </plugins>-->
 <!--    </build>-->
 
-<<<<<<< HEAD
-    <dependencies>
-=======
 
->>>>>>> 2489eaabe19fd1bb98d1d662edddae7ec44fe582
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
