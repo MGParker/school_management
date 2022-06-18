@@ -2,8 +2,10 @@ package za.ac.cput.service;
 
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.City;
+import za.ac.cput.domain.Country;
 import za.ac.cput.repository.CityRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +35,20 @@ public class CityServiceImpl implements CityService {
 
     public void deleteById(String id) {
         Optional<City> city = read(id);
-        if (city.isPresent())
-            delete(city.get());
+        city.ifPresent(this::delete);
     }
+
+    //Question 7
+    @Transactional
+    public List<City> findCitiesByCountry(Country country){
+        try {
+            return this.cityRepository.findCitiesByCountry(country);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+
 }
