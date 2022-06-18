@@ -1,20 +1,26 @@
 package za.ac.cput.domain;
 
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 @Entity
-@Embeddable
 public class City implements Serializable {
 
     @NotNull @Id
     private String id;
     @NotNull
     private String name;
-    @NotNull @Embedded
+    @NotNull
+    @ManyToOne(cascade = {PERSIST, MERGE})
+    @NotFound(action = NotFoundAction.IGNORE)
     private Country country;
 
     protected City() {}

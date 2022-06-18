@@ -1,6 +1,7 @@
 package za.ac.cput.service;
 
 import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CityServiceImplTest {
     private Country country = CountryFactory.build("220408024", "South Africa");
     private City city = CityFactory.build("220408025", "Cape Town", country);
+    @Autowired
     private CityService cityService;
 
     @Test
@@ -42,7 +44,7 @@ class CityServiceImplTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     void delete() {
         this.cityService.delete(this.city);
         List<City> cities = this.cityService.readAll();
@@ -50,10 +52,10 @@ class CityServiceImplTest {
     }
 
     @Test
-    @Order(4)
+    @Order(3)
     void readAll() {
         this.cityService.save(this.city);
         List<City> cities = this.cityService.readAll();
-        assertEquals(0, cities.size());
+        assertEquals(1, cities.size());
     }
 }
