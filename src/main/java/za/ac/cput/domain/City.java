@@ -12,16 +12,15 @@ import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 
 @Entity
-@Embeddable
 public class City implements Serializable {
 
     @NotNull @Id
     private String id;
     @NotNull
     private String name;
+    @NotNull
     @ManyToOne(cascade = {PERSIST, MERGE})
     @NotFound(action = NotFoundAction.IGNORE)
-    @NotNull
     private Country country;
 
     protected City() {}

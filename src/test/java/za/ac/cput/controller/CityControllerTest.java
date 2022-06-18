@@ -73,13 +73,18 @@ class CityControllerTest {
     @Test
     @Order(4)
     void readAll() {
-        String url = baseUrl + "all";
+        String url = baseUrl + "read-all";
         System.out.println(url);
         ResponseEntity<City[]> response = this.restTemplate.getForEntity(url,
                 City[].class);
         System.out.println(Arrays.asList(response.getBody()));
         assertAll(
+<<<<<<< HEAD
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode())
+=======
+                () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
+                () -> assertTrue(response.getBody().length == 0)
+>>>>>>> 1e59caaecf8428269e26544978a70f4ad163af34
         );
     }
 }

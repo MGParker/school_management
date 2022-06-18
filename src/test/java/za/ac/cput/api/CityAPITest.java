@@ -12,11 +12,13 @@ import za.ac.cput.api.CityAPI;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CityAPITest {
-    @Autowired private CityService cityService;
-    @Autowired private CityAPI cityApi;
 
-    private Country county = CountryFactory.build("220408024", "South Africa");
-    private City city = CityFactory.build("220408025", "Cape Town", county);
+    @Autowired
+    private CityService cityService;
+    @Autowired
+    private CityAPI cityApi;
+    private Country country = CountryFactory.build("220408024", "South Africa");
+    private City city = CityFactory.build("220408025", "Cape Town", country);
 
     @Test
     void save() {
