@@ -27,4 +27,8 @@ public class AddressFactory {
         return address;
     }
 
+    public static Address.AddressID buildID(Address address){
+        return new Address.AddressID(address.getStreetNumber(), address.getStreetName(), address.getPostalCode(), address.getCity());
+    }
+
 }

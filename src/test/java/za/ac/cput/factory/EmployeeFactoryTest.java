@@ -5,16 +5,19 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.EmployeeAddress;
+import za.ac.cput.domain.Name;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeFactoryTest {
 
+    Name name = NameFactory.getName("Jack", "Jill", "Johnson");
+
     @Test public void buildWithSuccess(){
-        Employee employee = EmployeeFactory.createEmployee("5","kwkq@gmail.com",name);
+        Employee employee = EmployeeFactory.createEmployee("5","username@domain.com",name);
         System.out.println(employee);
         assertAll(
-                ()-> assertNotNull(address)
+                ()-> assertNotNull(employee)
         );
     }
 
