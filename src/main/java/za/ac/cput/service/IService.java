@@ -2,8 +2,10 @@ package za.ac.cput.service;
 
 import java.util.Optional;
 
-public interface IService <T, ID>{
+
+public interface IService<T, ID> {
     T save(T t);
     Optional<T> read(ID id);
-    boolean delete(T t);
+    void delete(T t);
+
 }
