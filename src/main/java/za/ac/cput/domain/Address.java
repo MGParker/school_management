@@ -6,19 +6,30 @@
 
 package za.ac.cput.domain;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Address {
+@Entity
+@IdClass(Address.AddressID.class)
+public class Address implements Serializable {
 
     //-----Variables-----
     private String unitNumber;
     private String complexNumber;
-    private String streetNumber;
-    private String streetName;
-    private int postalCode;
-    private City city;
+    @NotNull @Id private String streetNumber;
+    @NotNull @Id private String streetName;
+    @NotNull @Id private int postalCode;
+    @Embedded private City city;
 
     //-----Constructor-----
+
+    protected Address(){}
+
     public Address(Builder builder) {
         this.unitNumber = builder.unitNumber;
         this.complexNumber = builder.complexNumber;
@@ -54,7 +65,7 @@ public class Address {
 
     public void setCity(City city) {this.city = city;}
 
-    public static class AddressID{
+    public static class AddressID implements Serializable{
         private String streetNumber;
         private String streetName;
         private int postalCode;

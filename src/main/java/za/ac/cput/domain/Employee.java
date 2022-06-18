@@ -1,15 +1,27 @@
 package za.ac.cput.domain;
 
+import lombok.NonNull;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Employee {
+@Entity
+public class Employee implements Serializable {
 
     //-----Variables-----
+    @NonNull @Id
     private String staffID;
+    @NonNull
     private String email;
+    @NonNull
     private Name name;
 
     //-----Constructor-----
+
+    protected Employee(){}
+
     public Employee(Builder builder) {
         this.staffID = builder.staffID;
         this.email = builder.email;
