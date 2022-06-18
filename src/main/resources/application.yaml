@@ -1,6 +1,6 @@
 server:
   error:
-    include-stacktrace: never
+    include-stacktrace: always
 spring:
   jpa:
     hibernate:
@@ -9,5 +9,5 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/city_management-db?createDatabaseIfNotExist=true
     username: root
-    password: password
+    password:
 
