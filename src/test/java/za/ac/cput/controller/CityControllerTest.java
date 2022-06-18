@@ -1,4 +1,10 @@
 package za.ac.cput.controller;
+/*
+ CityControllerTest.java
+ Test for the City controller
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
