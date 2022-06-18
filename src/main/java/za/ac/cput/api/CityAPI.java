@@ -17,7 +17,8 @@ public class CityAPI {
     private final CityService cityService;
     private final CountryServiceImpl countryService;
 
-    @Autowired public CityAPI(CountryServiceImpl countryService, CityService cityService) {
+    @Autowired
+    public CityAPI(CountryServiceImpl countryService, CityService cityService) {
         this.countryService= countryService;
         this.cityService = cityService;
     }
@@ -39,7 +40,8 @@ public class CityAPI {
                 Collections.sort(cityNames);
                 return cityNames;
             }
-        } catch (NoSuchElementException e){
+        }
+        catch (NoSuchElementException e){
             return null;
         }
         return null;

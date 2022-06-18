@@ -7,11 +7,11 @@ import za.ac.cput.domain.Country;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CityFactoryTest {
-    Country SouthAfrica = CountryFactory.build("123456789", "South Africa");
+    Country country = CountryFactory.build("220408024", "South Africa");
 
     @Test
     void buildWithSuccess() {
-        City city = CityFactory.build("21223933", "Cape Town", SouthAfrica);
+        City city = CityFactory.build("220408025", "Cape Town", country);
         System.out.println(city);
         assertNotNull(city);
     }
@@ -19,7 +19,7 @@ class CityFactoryTest {
     @Test
     void buildWithError() {
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> CityFactory.build(null, "", SouthAfrica));
+                () -> CityFactory.build(null, "", country));
 
         String exceptionMessage = exception.getMessage();
         System.out.println(exceptionMessage);
